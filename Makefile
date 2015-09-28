@@ -4,9 +4,17 @@ CC=g++
 FLG=-std=c++11
 
 nothing:
-	
-benchmark:
-	$(CC) $(FLG) main.cpp -o benchmark
 
-pcsplayer:
+cpuports:
+	$(CC) $(FLG) CPUports/CPUports.h -o CPUports/CPUports.o
+
+pitctl:
+	$(CC) $(FLG) -I CPUports PITctl/PITctl.h -o PITctl/PITctl.o
+
+benchmark: 
+	$(CC) $(FLG) -I PITctl -I CPUports CPUbenchmark/benchmark.cpp -o build/benchmark
+
+pcsplayer: pitctl
 	$(CC) $(FLG) PCSplayer/PCSplayer.cpp -o PCSplayer/build/pcsplayer
+
+
