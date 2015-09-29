@@ -20,7 +20,6 @@
 PIT2ctl* pit2; 
 
 void Initialize(){
-	delay(1000);
 	try{
 		pit2 = new PIT2ctl();
 	}
@@ -34,6 +33,11 @@ void Initialize(){
 int main (int argc, char** argv){
 	//cout<<ports.TakePermission(0x61, 1);
 	Initialize();
+
+	//pit2->SetFreq(900);
+
+	cout<<pit2->GetCounterValue() << endl;
+
 	// Lab2	Tasks:
 	// 1 Set counter's period to it's maximum
 	// 2 Read counter's value

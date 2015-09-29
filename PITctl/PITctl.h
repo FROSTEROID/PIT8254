@@ -38,14 +38,15 @@ public:
 		unsigned char *high = new unsigned char[1];
 		GetHLBytes(countdown, low, high);
 		ports.WriteByteToPort(0xb6, port_timer2a); 	// SC1 SC0 RW1 RW0 M2 M1 M0 BCD
-													//	1	0	1	1	
+													//	1	0	1	1	0  1  1	 0	
 		ports.WriteByteToPort(*low, port_timer2b);
 		ports.WriteByteToPort(*high, port_timer2b);
 	}
 
 	int GetCounterValue(){
-		int rez;
-		
+		int rez = 0;
+		rez += ports.ReadByteFromPort(port_timer2b);
+		rez += ports.ReadByteFromPort(port_timer2b)<<8;
 	}
 
 };
