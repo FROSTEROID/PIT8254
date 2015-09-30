@@ -14,7 +14,5 @@ pitctl:
 benchmark: 
 	$(CC) $(FLG) -I PITctl -I CPUports CPUbenchmark/benchmark.cpp -o build/benchmark
 
-pcsplayer: pitctl
+pcsplayer: 
 	$(CC) $(FLG) PCSplayer/PCSplayer.cpp -o PCSplayer/build/pcsplayer
-
-

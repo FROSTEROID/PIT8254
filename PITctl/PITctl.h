@@ -44,6 +44,11 @@ public:
 		ports.WriteByteToPort(*high, port_PIT2);
 	}
 
+	short int GetCurrentCount(){
+		ports.WriteByteToPort(128, port_PITCW);
+		return ports.ReadByteFromPort(port_PIT2);
+	}
+
 	short int GetStatusByte(){
 		return  ports.ReadByteFromPort(port_PIT2);
 	}
