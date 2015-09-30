@@ -3,6 +3,8 @@
     #include <iostream.h>
 #else
     #include <iostream>
+	#include <chrono>
+	#include <thread>
 #endif
 
 #include "PITctl.h"
@@ -34,10 +36,17 @@ int main (int argc, char** argv){
 	//cout<<ports.TakePermission(0x61, 1);
 	Initialize();
 
-	//pit2->SetFreq(900);
+	pit2->SetSquareWaveMode(200);
+	//pit2->OpenSpeaker();
+	//delay(400);
+	//pit2->CloseSpeaker();
 
-	cout<<pit2->GetCounterValue() << endl;
-
+	//cout<<pit2->GetStatusByte() 	<<endl;
+	while(true){
+		cout<<pit2->GetStatusByte()		<<endl;
+		cout<<pit2->OutIsHigh()			<<endl;
+		delay(30);
+	}
 	// Lab2	Tasks:
 	// 1 Set counter's period to it's maximum
 	// 2 Read counter's value
